@@ -25,7 +25,7 @@ export const useProductStore = defineStore('products', () => {
             id: 2,
             productImage: "~/img/products/cupcakes2.png",
             productName: "Tradicional Sabor Morango",            
-            description: "Cupcake artesanal feito com ingredientes de primeira quálidade.",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce volutpat facilisis justo. Suspendisse justo turpis, dignissim eget consequat ut, venenatis nec odio. Ut vitae neque id purus vulputate vestibulum eget eu diam. Aliquam vestibulum turpis non tortor ornare, eu tincidunt felis vulputate.",
             price: 16.80,
         },
         {

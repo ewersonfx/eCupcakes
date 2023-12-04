@@ -10,9 +10,6 @@
       productStore.load();
   });
 
-  function handleBuyClick(id){
-      alert('Você clicou em : ' + id);
-  }
 
 </script>
 
@@ -20,7 +17,7 @@
 
   <div class="container">
     <div class="row row-cols-2 row-cols-md-2 g-1">
-      <ProductItem @buy-click="handleBuyClick" v-for="(prod, index) in productStore.products" :key="index" :="prod" />
+      <ProductItem v-for="(prod, index) in productStore.products" :key="index" :="prod" />
     </div>
   </div>
 

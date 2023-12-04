@@ -2,16 +2,20 @@
     import { onMounted } from "vue";
     import { useRoute } from 'vue-router'
     import { useProductStore } from '@/stores/products.js'
+    import ProductItemDetails from '@/components/ProductItemDetails.vue'
 
     const route = useRoute();
+    const productStore = useProductStore();
 
     onMounted(()=>{
-        alert(route.params.id);
+        productStore(route.params.id);
     });
 
 </script>
 
 
 <template>
-    <h4>okview</h4>
+    <div class="container">
+        <ProductItemDetails />
+    </div>
 </template>
