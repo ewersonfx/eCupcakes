@@ -1,6 +1,5 @@
 <script setup>
-    import { defineProps } from 'vue';
-    import { RouterLink } from 'vue-router'
+    import { defineProps } from 'vue';    
 
     const emit = defineEmits(['buyClick']);
 
@@ -17,11 +16,11 @@
 <template>
 
     <div class="col">
-        <RouterLink :to="'/productdetails/'+props.id" class="text-decoration-none">
+        <router-link :to="'/productdetails/' + props.id" class="text-decoration-none">
             <div class="card h-100">
                 <img src="../assets/noimage_product.png" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h6 class="card-title text-wrap text-truncate" style="height: 100px; ">{{ props.productName }}</h6>                   
+                    <h6 class="card-title text-wrap text-truncate">{{ props.productName }}</h6>                   
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item fw-bold text-primary fs-4">R$ {{ props.price.toFixed(2).replace(',','').replace('.',',') }}</li>                
@@ -30,7 +29,7 @@
                     <RouterLink :to="'/productdetails/'+props.id" class="btn btn-outline-primary">Comprar</RouterLink>                
                 </div> -->
             </div>
-        </RouterLink>
+        </router-link>
     </div>
 </template>
 

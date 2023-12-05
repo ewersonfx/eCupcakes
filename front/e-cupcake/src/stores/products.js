@@ -1,19 +1,20 @@
-import { reactive, computed } from 'vue'
+import { reactive } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useProductStore = defineStore('products', () => {
   
-    const products = reactive([])  
+    const products = reactive([])      
 
-    const filter = computed(()=>{
-        return products.filter(x=>x.id);
-    })
+    async function getById(id) {        
+        console.log("product id: " + id);
+        return products.find( x=> x.id == id);
+    }
     
-    function append(items) {
+    async function append(items) {
         products.push(...items);
     }
 
-    function load(){
+    async function load(){
         const prods = [{
             id: 1,
             productImage: "~/img/products/cupcakes.png",
@@ -43,8 +44,8 @@ export const useProductStore = defineStore('products', () => {
             price: 14.30,
         }];
 
-        append(prods);
+        await append(prods);
     }
 
-    return { products, load, filter }
+    return { products, load, getById }
 })

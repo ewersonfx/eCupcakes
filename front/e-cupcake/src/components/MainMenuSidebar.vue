@@ -1,5 +1,17 @@
 <script setup>
-  import { RouterLink } from 'vue-router';
+  
+  import { onMounted, ref } from 'vue';
+  
+  const IsShow = ref(false);
+  
+  onMounted(()=>{
+    IsShow.value = true;
+    //alert(route.from.fullPath);
+  })
+
+  function navigateTo(url){    
+    route.push(url);
+  }
 
 </script>
 
@@ -33,7 +45,7 @@
   </symbol>
 </svg>
 
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+  <div  class="offcanvas offcanvas-start {{ if(IsShow) ? 'show' : '' }}" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
     
     <div class="offcanvas-header">
        
@@ -60,35 +72,36 @@
 
       <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-          <RouterLink to="/" class="nav-link">
+          <router-link to="/" class="nav-link">
             <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
             Início
-          </RouterLink>                
+          </router-link>                
           <!-- <a href="#" class="nav-link" aria-current="page">
             <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
             Início
           </a> -->
         </li>
         <li>
-          <a href="#" class="nav-link link-body-emphasis">
+          <a href="javascript:;" @click="navigateTo('/')" class="nav-link link-body-emphasis">
             <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#search"/></svg>
             Busca
           </a>
         </li>
         <li>
-          <a href="#" class="nav-link link-body-emphasis">
+          <a href="javascript:;" @click="navigateTo('/checkout')" class="nav-link link-body-emphasis">
+            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#search"/></svg>
+           teste2
+          </a>
+        </li>
+        <li>
+          <router-link :to="'/checkout'" class="nav-link link-body-emphasis">
             <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#bag"/></svg>
             Meus pedidos
-          </a>
+          </router-link>
         </li>        
       </ul>
     </div>
 
   </div>
 
-    
 </template>
-
-<style scoped>
-  
-</style>

@@ -1,6 +1,5 @@
 <script setup>
-    import { defineProps } from 'vue';
-    import { RouterLink } from 'vue-router'
+    import { defineProps, onMounted } from 'vue';    
 
     const emit = defineEmits(['buyClick']);
 
@@ -10,11 +9,11 @@
         description: { type: String, required: false, default: 'The very best of all products.'},        
         price: { type: Number, required: false, default: 0 },
         priceOld: { type: Number, required: false, default: 0 }
-    });
+    });  
 
-    const handleBuyClick = () => {        
-        emit('buyClick', props.id );
-    }
+    onMounted(() => {
+        console.log('RecProps: ' + props.productName);
+    })
 
 </script>
 

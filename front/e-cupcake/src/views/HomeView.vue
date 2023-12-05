@@ -6,8 +6,8 @@
 
   const productStore = useProductStore();
 
-  onMounted(()=>{
-      productStore.load();
+  onMounted(async ()=>{
+      await productStore.load();
   });
 
 
