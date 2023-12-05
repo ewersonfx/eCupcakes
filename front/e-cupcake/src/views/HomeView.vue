@@ -6,10 +6,6 @@
 
   const productStore = useProductStore();
 
-  onMounted(async ()=>{
-      await productStore.load();
-  });
-
 
 </script>
 

@@ -1,16 +1,17 @@
 <script setup>
   
   import { onMounted, ref } from 'vue';
-  
-  const IsShow = ref(false);
-  
+  import { Offcanvas } from 'bootstrap';
+    
+  let canvasClose = ref(null);
+
   onMounted(()=>{
-    IsShow.value = true;
+    
     //alert(route.from.fullPath);
   })
 
-  function navigateTo(url){    
-    route.push(url);
+  function handleClick() {      
+    canvasClose.value.click();
   }
 
 </script>
@@ -45,11 +46,11 @@
   </symbol>
 </svg>
 
-  <div  class="offcanvas offcanvas-start {{ if(IsShow) ? 'show' : '' }}" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
     
     <div class="offcanvas-header">
        
-      <div class="">
+      <div @click="handleClick">
         <a href="#" class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none" aria-expanded="false">
           <img src="https://github.com/mdo.png" alt="" width="40" height="40" class="rounded-circle me-2">
           <div class="">
@@ -63,38 +64,28 @@
 
     
 
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <button ref="canvasClose" type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 
     </div>
 
     <div class="offcanvas-body pt-0">
       <hr>
 
-      <ul class="nav nav-pills flex-column mb-auto">
+      <ul @click="handleClick" class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
           <router-link to="/" class="nav-link">
             <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
             Início
-          </router-link>                
-          <!-- <a href="#" class="nav-link" aria-current="page">
-            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-            Início
-          </a> -->
+          </router-link>                          
         </li>
         <li>
-          <a href="javascript:;" @click="navigateTo('/')" class="nav-link link-body-emphasis">
+          <router-link to="/search" class="nav-link link-body-emphasis">
             <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#search"/></svg>
             Busca
-          </a>
-        </li>
+          </router-link>
+        </li>        
         <li>
-          <a href="javascript:;" @click="navigateTo('/checkout')" class="nav-link link-body-emphasis">
-            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#search"/></svg>
-           teste2
-          </a>
-        </li>
-        <li>
-          <router-link :to="'/checkout'" class="nav-link link-body-emphasis">
+          <router-link to="/checkout" class="nav-link link-body-emphasis">
             <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#bag"/></svg>
             Meus pedidos
           </router-link>
